@@ -1,4 +1,6 @@
 # delay_http
+A simple server to send a http request and for it to wait the specified amount of seconds until completion
+
 
 ## How to run
 Requires docker
