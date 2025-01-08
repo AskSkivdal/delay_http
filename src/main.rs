@@ -1,4 +1,5 @@
 use std::{thread, time::Duration};
+use actix_cors::Cors;
 
 use actix_web::{get, web, App, HttpServer, Responder};
 
@@ -22,7 +23,9 @@ async fn delay(secs: web::Path<String>) -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().service(index).service(delay))
+
+
+    HttpServer::new(|| App::new().wrap(Cors::permissive()).service(index).service(delay))
         .bind(("0.0.0.0", 8080))?
         .run()
         .await
